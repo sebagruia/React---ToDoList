@@ -1,0 +1,154 @@
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+/* MODAL DESIGN */
+
+.modal-header {
+  background-color: #2b3f5d;
+}
+
+#modalCancelButton {
+  background-color: #2b3f5d;
+}
+
+
+.inputForModal {
+  width: 100%;
+}
+
+
+/* .form-group2-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 23vw;
+  margin: 0 auto
+}
+
+.newList {
+  color: #ffc107;
+  cursor: pointer;
+}
+
+
+.newList h5 {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.col1 {
+  border-right: 0.5px solid #2b3f5d;
+  margin-top: 30px;
+
+}
+
+.list-types {
+  text-align: left;
+  list-style: none;
+}
+
+.list-types .item {
+  color: #2b3f5d;
+} */
+
+
+
+
+/* Setting the color fo input placeholder attribute */
+.changePlaceholderTextColor::-webkit-input-placeholder {
+  color: #fff;
+}
+
+.changePlaceholderTextColor:-ms-input-placeholder {
+  color: #fff;
+}
+
+.changePlaceholderTextColor::-ms-input-placeholder {
+  color: #fff;
+}
+
+.changePlaceholderTextColor::placeholder {
+  color: #fff;
+}
+
+
+
+
+/* Bootstrap Classes Edited */
+
+.text-danger {
+  color: #b33939 !important;
+}
+
+.bg-primary {
+  background-color: #2b3f5d !important;
+}
+
+
+/* Scrollbar Css  */
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+/* ::-webkit-scrollbar-track {
+  background: #fff;
+} */
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ffc107;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2b3f5d;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
