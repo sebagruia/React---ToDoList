@@ -10,7 +10,7 @@ that you want to resolve or just to remember so that you can be more efficient i
 
 ## Web Link
 
-[Link to the  GitHub Page](https://sebagruia.github.io/ToDo-List/)
+[Link to the  GitHub Page](https://sebagruia.github.io/React---ToDoList/)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
