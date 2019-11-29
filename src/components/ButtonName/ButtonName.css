@@ -2,17 +2,9 @@
     text-transform: capitalize;
   }
 
-.myListSummary {
-    width: 90%;
-    height:200px;
-    padding-left: 40px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-weight: 300;
-    overflow-y:scroll;
-}
 
-.myListSummary li {
+
+.newListLi {
     font-family: 'Yanone Kaffeesatz', sans-serif;
     text-transform: capitalize;
     padding: 0 5px;
@@ -22,11 +14,11 @@
     cursor: context-menu;
 }
 
-.myListSummary li .btn {
+.newListLi .btn {
     font-weight: 300;
 }
 
-.myListSummary li p {
+/* .myListSummary li p {
     display: inline-block;
     margin-left: 5px;
     font-size: 1.3em;
@@ -35,7 +27,7 @@
 
 .myListSummary li i {
     color: #0097e6;
-}
+} */
 
 @media screen and (min-width:320px) {
     .listSummarySection .myListSummary-wraper {

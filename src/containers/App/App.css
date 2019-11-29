@@ -53,8 +53,40 @@
 }
 
 
+.myListSummary-wraper .btn{
+  color: #ffc107;
+  border: 1px solid #ffc107;
+}
+.myListSummary-wraper .btn:hover{
+  color: #000;
+}
+
+.myListSummary-wraper .dropdown{
+  width:90%;
+
+}
+.myListSummary-wraper #dropdown-basic-button{
+  width:100%;
+
+}
+.myListSummary-wraper .dropdown-menu{
+  width: 50%;
+  text-align: center;
+  background-color: #f1f2f6;
+
+}
 
 
+
+.myListSummary {
+  width: 90%;
+  height:200px;
+  padding-left: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: 300;
+  overflow-y:scroll;
+}
 
 .list-content {
   position: relative;
@@ -159,9 +191,9 @@
     width: 100%;
   }
 
-  .dropdown-menu {
-    left: 1px !important;
-  }
+  /* .dropdown-menu {
+    left: 15px !important;
+  } */
 
   .taskForm .component1 {
     margin-left: 3%;
@@ -179,12 +211,12 @@
   }
 }
 
-@media screen and (min-width: 375px) {
+/* @media screen and (min-width: 375px) {
 
   .dropdown-menu {
     left: 4px !important;
   }
-}
+} */
 
 @media screen and (min-width:384px) {
   .taskForm .component1 {
@@ -201,9 +233,12 @@
 }
 
 @media screen and (min-width:412px) {
-  .dropdown-menu {
+  /* .dropdown-menu {
     left: 5px !important;
-  }
+  } */
+  .myListSummary-wraper .dropdown {
+    width: 80%;
+}
 
 }
 
@@ -216,26 +251,29 @@
     width: 63%;
   }
 
-  .dropdown-menu {
+  /* .dropdown-menu {
     left: 9px !important;
-  }
+  } */
 }
 
 @media screen and (min-width:533px) {
   .taskForm .component1 {
     margin-left: 8%;
   }
+  .myListSummary-wraper .dropdown {
+    width: 70%;
+}
 
-  .dropdown-menu {
+  /* .dropdown-menu {
     left: 12px !important;
-  }
+  } */
 
 }
 
 @media screen and (min-width:600px) {
-  .dropdown-menu {
+  /* .dropdown-menu {
     left: 15px !important;
-  }
+  } */
 
   .taskForm .component2 {
     margin-left: 30px;
@@ -246,6 +284,9 @@
   .taskForm .component2 {
     margin-left: 50px;
   }
+  .myListSummary-wraper .dropdown {
+    width: 50%;
+}
 }
 
 @media screen and (min-width:768px) {
@@ -253,9 +294,9 @@
     width: 84%;
   }
 
-  .dropdown-menu {
+  /* .dropdown-menu {
     left: 23px !important;
-  }
+  } */
 
   .formWraper {
     margin-left: 34px;

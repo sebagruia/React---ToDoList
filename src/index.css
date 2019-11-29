@@ -5,7 +5,7 @@
 
 body {
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 100%;
+  font-size: 16px;
   margin: 0;
   padding: 0;
 }
@@ -27,40 +27,6 @@ body {
   width: 100%;
 }
 
-
-/* .form-group2-flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 23vw;
-  margin: 0 auto
-}
-
-.newList {
-  color: #ffc107;
-  cursor: pointer;
-}
-
-
-.newList h5 {
-  display: inline-block;
-  margin-left: 5px;
-}
-
-.col1 {
-  border-right: 0.5px solid #2b3f5d;
-  margin-top: 30px;
-
-}
-
-.list-types {
-  text-align: left;
-  list-style: none;
-}
-
-.list-types .item {
-  color: #2b3f5d;
-} */
 
 
 

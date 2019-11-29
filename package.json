@@ -2,10 +2,9 @@
   "name": "to-do-list",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://sebagruia.github.io/ToDo-List/",
   "dependencies": {
-    "bootstrap": "^4.3.1",
     "gh-pages": "^2.1.1",
-    "homepage": "https://sebagruia.github.io/React---ToDoList/",
     "react": "^16.10.2",
     "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.10.2",
