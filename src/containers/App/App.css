@@ -211,12 +211,6 @@
   }
 }
 
-/* @media screen and (min-width: 375px) {
-
-  .dropdown-menu {
-    left: 4px !important;
-  }
-} */
 
 @media screen and (min-width:384px) {
   .taskForm .component1 {
@@ -255,6 +249,14 @@
     left: 9px !important;
   } */
 }
+
+@media screen and (min-width: 500px){
+  .listSummarySection #inputNewListItem {
+    width: 94.5%;
+}
+}
+
+
 
 @media screen and (min-width:533px) {
   .taskForm .component1 {
