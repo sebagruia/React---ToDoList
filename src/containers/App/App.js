@@ -234,7 +234,7 @@ class App extends Component {
     return (
       <Fragment>
         {/*Bootstrap Modal*/}
-        < Modal show={this.state.show} className="modal-sm ">
+        < Modal show={this.state.show}>
           <Modal.Header className="modal-header text-white">
             <Modal.Title>Edit Entry</Modal.Title>
           </Modal.Header>
@@ -318,7 +318,7 @@ class App extends Component {
                     aria-describedby="edit an existing entry field" />
                 </div>
                 <div
-                  onClick={() => this.addNewItem()}
+                  onClick={(event) => this.addNewItem(event)}
                   className="component2"
                   role="button">
                   <i className="far fa-plus-square" aria-hidden="true"></i>
