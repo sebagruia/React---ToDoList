@@ -70,7 +70,8 @@ class App extends Component {
   }
 
   // Adds new Button
-  plusNewButton = () => {
+  plusNewButton = (event) => {
+    event.preventDefault();
     if (this.state.inputAddNewButton === "") {
       return
     }
@@ -93,7 +94,8 @@ class App extends Component {
   }
 
   // Adds new Item to the created list
-  addNewItem = () => {
+  addNewItem = (event) => {
+    event.preventDefault();
     if (this.state.inputAddNewItem === "") {
       return
     }
@@ -270,7 +272,7 @@ class App extends Component {
 
           <div className="row">
             <div className="col-lg-4 listSummarySection">
-              <form className="form-inline formWraper">
+              <form className="form-inline formWraper" onSubmit ={(event) => this.plusNewButton(event)}>
                 <input
                   onChange={this.onInputchange}
                   value={this.state.inputAddNewButton}
@@ -281,7 +283,7 @@ class App extends Component {
                   aria-label="Insert text"
                   aria-describedby="edit an existing entry field" />
                 <button
-                  onClick={() => this.plusNewButton()}
+                  onClick={(event) => this.plusNewButton(event)}
                   type="button"
                   id="plusButton"
                   className="btn-warning">+</button>
@@ -304,7 +306,7 @@ class App extends Component {
               </div>
             </div>{/*End Of Col-lg-4*/}
             <div className="col-lg-8 list-content">
-              <form className="taskForm">
+              <form className="taskForm" onSubmit ={(event) => this.addNewItem(event)}>
                 <div className="component1">
                   <input
                     onChange={this.onInputChangeNewItem}
