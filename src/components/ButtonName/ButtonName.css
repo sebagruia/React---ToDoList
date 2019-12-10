@@ -18,16 +18,6 @@
     font-weight: 300;
 }
 
-/* .myListSummary li p {
-    display: inline-block;
-    margin-left: 5px;
-    font-size: 1.3em;
-    font-weight: 300;
-}
-
-.myListSummary li i {
-    color: #0097e6;
-} */
 
 @media screen and (min-width:320px) {
     .listSummarySection .myListSummary-wraper {

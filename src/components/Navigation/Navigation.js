@@ -3,7 +3,15 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import './Navigation.css';
 
-const Navigation = ({createFormforAddingListButtons}) => {
+const Navigation = ({onRouteChange}) => {
+
+    const onLogInButton = ()=>{
+        onRouteChange('login');
+    }
+    const onRegisterButton = ()=>{
+        onRouteChange('register');
+    }
+
 
     return (
         <Fragment>
@@ -16,10 +24,10 @@ const Navigation = ({createFormforAddingListButtons}) => {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
                             <li className="nav-item item1 ml-auto ">
-                                <button type="button" id="buttonForAddingToDoList" className="btn btn-outline-secondary wraper">
+                                <button type="button" id="buttonForAddingToDoList" className="btn btn-outline-secondary wraper" onClick={()=>onLogInButton()}>
                                     <h5 className="font-weight-light">Log In</h5>
                                 </button>
-                                <button type="button" id="buttonForAddingToDoList" className="btn btn-outline-secondary wraper">
+                                <button type="button" id="buttonForAddingToDoList" className="btn btn-outline-secondary wraper" onClick={()=>onRegisterButton()}>
                                     <h5 className="font-weight-light">Register</h5>
                                 </button>
                             </li>

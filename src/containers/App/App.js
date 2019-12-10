@@ -1,17 +1,19 @@
 import React, { Component, Fragment } from 'react';
 import StartPage from '../../components/StartPage/StartPage';
-import Modal from 'react-bootstrap/Modal';
+import Modalpopup from '../../components/Modalpopup/Modalpopup';
 import Navigation from '../../components/Navigation/Navigation';
-import Button from 'react-bootstrap/Button';
 import '../App/App.css';
 import Item from "../../components/Item/Item";
 import ButtonName from "../../components/ButtonName/ButtonName";
 import DropdownButton from 'react-bootstrap/DropdownButton';
+import Login from '../../components/Login/Login';
+import Register from '../../components/Register/Register';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
+      route:'home',
       windowWidth: 0,
       activeButtonId: 0,
       activeButtonName: '',
@@ -172,6 +174,21 @@ class App extends Component {
   }
   // ====================================
 
+  onRouteChange = (route) => {
+    // if(route==="home" || this.state.route==="register" ){
+    //   this.setState({ route: "login" });
+    // }
+    // else if(this.state.route==="home" || this.state.route==="login" ){
+    //   this.setState({ route: "register" });
+    // }
+
+    this.setState({route:route});
+  }
+
+
+
+
+
 
 
   render() {
@@ -233,108 +250,91 @@ class App extends Component {
 
     return (
       <Fragment>
-        {/*Bootstrap Modal*/}
-        < Modal show={this.state.show}>
-          <Modal.Header className="modal-header text-white">
-            <Modal.Title>Edit Entry</Modal.Title>
-          </Modal.Header>
-
-          <Modal.Body>
-            <input
-              onChange={this.modalOnInputChange}
-              type="text"
-              className="form-control inputForModal"
-              placeholder="Your edit in here"
-              aria-label="edit"
-              aria-describedby="edit an existing entry field" />
-          </Modal.Body>
-
-          <Modal.Footer>
-            <Button
-              id="modalCancelButton"
-              className="btn text-white"
-              onClick={(event) => this.handleClose(event)}>Close</Button>
-            <Button
-              onClick={() => this.saveModalNewValue()}
-              id="modalSaveButton"
-              className="btn bg-warning text-white">Save</Button>
-          </Modal.Footer>
-        </Modal >
-        {/*Modal*/}
-
+        <Modalpopup show={this.state.show} 
+                    onChange = {(event)=>this.modalOnInputChange(event)} 
+                    handleClose = {()=>this.handleClose()}
+                    saveModalNewValue ={()=>this.saveModalNewValue()}/>
         < StartPage />
 
         <div className="container-fluid border border-light">
           <div className="row">
-            <Navigation />
-          </div>
-          {/*End Of Row*/}
+            <Navigation onRouteChange={this.onRouteChange} />
+          </div>{/*End Of Row*/}
+          
 
-          <div className="row">
-            <div className="col-lg-4 listSummarySection">
-              <form className="form-inline formWraper" onSubmit ={(event) => this.plusNewButton(event)}>
-                <input
-                  onChange={this.onInputchange}
-                  value={this.state.inputAddNewButton}
-                  type="text"
-                  id="inputNewListItem"
-                  className="form-control"
-                  placeholder="Name Your List"
-                  aria-label="Insert text"
-                  aria-describedby="edit an existing entry field" />
-                <button
-                  onClick={(event) => this.plusNewButton(event)}
-                  type="button"
-                  id="plusButton"
-                  className="btn-warning">+</button>
-              </form>
 
-              <div className="myListSummary-wraper">
-                <DropdownButton
-                  id="dropdown-basic-button"
-                  className={` m-auto capitalize ${dropdownButtonVisibility()}`}
-                  title="All Your Lists"
-                  variant="Warning"
-                  size="lg">
-                  {buttonsToBeRender}
-                </DropdownButton>
+        { this.state.route ==="login" 
+            ? <Login />
+            : this.state.route === "home" ?
+                <div className="row">
+                <div className="col-lg-4 listSummarySection">
+                  <form className="form-inline formWraper" onSubmit ={(event) => this.plusNewButton(event)}>
+                    <input
+                      onChange={this.onInputchange}
+                      value={this.state.inputAddNewButton}
+                      type="text"
+                      id="inputNewListItem"
+                      className="form-control"
+                      placeholder="Name Your List"
+                      aria-label="Insert text"
+                      aria-describedby="edit an existing entry field" />
+                    <button
+                      onClick={(event) => this.plusNewButton(event)}
+                      type="button"
+                      id="plusButton"
+                      className="btn-warning">+</button>
+                  </form>
 
-                <ul className={`myListSummary ${ulVisibility()}`}>
-                  {buttonsToBeRender}
-                </ul>
+                  <div className="myListSummary-wraper">
+                    <DropdownButton
+                      id="dropdown-basic-button"
+                      className={` m-auto capitalize ${dropdownButtonVisibility()}`}
+                      title="All Your Lists"
+                      variant="Warning"
+                      size="lg">
+                      {buttonsToBeRender}
+                    </DropdownButton>
 
-              </div>
-            </div>{/*End Of Col-lg-4*/}
-            <div className="col-lg-8 list-content">
-              <form className="taskForm" onSubmit ={(event) => this.addNewItem(event)}>
-                <div className="component1">
-                  <input
-                    onChange={this.onInputChangeNewItem}
-                    value={this.state.inputAddNewItem}
-                    type="text"
-                    className="form-control shadow input-new-line"
-                    placeholder="New item"
-                    aria-label="Insert text"
-                    aria-describedby="edit an existing entry field" />
-                </div>
-                <div
-                  onClick={(event) => this.addNewItem(event)}
-                  className="component2"
-                  role="button">
-                  <i className="far fa-plus-square" aria-hidden="true"></i>
-                  <h5 className="addTask">Add new item</h5>
-                </div>
-              </form>
-              <ul className="todo-list">
-                <h3 className="todo-name">{this.state.activeButtonName}</h3>
+                    <ul className={`myListSummary ${ulVisibility()}`}>
+                      {buttonsToBeRender}
+                    </ul>
+                  </div>
+                </div>{/*End Of Col-lg-4*/}
 
-                {itemToBeRender}
+                <div className="col-lg-8 list-content">
+                  <form className="taskForm" onSubmit ={(event) => this.addNewItem(event)}>
+                    <div className="component1">
+                      <input
+                        onChange={this.onInputChangeNewItem}
+                        value={this.state.inputAddNewItem}
+                        type="text"
+                        className="form-control shadow input-new-line"
+                        placeholder="New item"
+                        aria-label="Insert text"
+                        aria-describedby="edit an existing entry field" />
+                    </div>
+                    <div
+                      onClick={(event) => this.addNewItem(event)}
+                      className="component2"
+                      role="button">
+                      <i className="far fa-plus-square" aria-hidden="true"></i>
+                      <h5 className="addTask">Add new item</h5>
+                    </div>
+                  </form>
+                  <ul className="todo-list">
+                    <h3 className="todo-name">{this.state.activeButtonName}</h3>
 
-              </ul>
+                    {itemToBeRender}
 
-            </div>
-          </div>
-          {/*End Of Row*/}
+                  </ul>
+                </div>{/*End Of Col*/}
+              </div>/*End Of Row*/
+              
+              : <Register />
+              
+
+        }
+         
         </div>{/*End Of Container Fluid*/}
       </Fragment >
 

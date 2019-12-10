@@ -15,11 +15,13 @@ nav {
 .nav-item .wraper {
     color: #fff;
     cursor: pointer;
+    margin-right:5px;
 }
 
 .nav-item .wraper h5 {
     display: inline-block;
     font-family: 'Yanone Kaffeesatz', sans-serif;
+    line-height: 10px;;
 
 }
 
