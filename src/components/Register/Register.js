@@ -3,7 +3,7 @@ import './Register.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-const Register = () => {
+const Register = ({onRouteChange}) => {
 
     const [validated, setValidated] = useState(false);
 
@@ -16,6 +16,11 @@ const Register = () => {
 
         setValidated(true);
     };
+
+    const onRegisterClick = ()=>{
+        onRouteChange('home');
+    
+       }
 
     return (
         <div className="container">
@@ -42,7 +47,7 @@ const Register = () => {
                             <Form.Control.Feedback type="invalid">Please type your password</Form.Control.Feedback>
                             <Form.Control.Feedback type="valid">Looks Good</Form.Control.Feedback>
                         </Form.Group>
-                        <Button variant="primary" type="submit" >
+                        <Button variant="primary" type="submit" onClick={()=>onRegisterClick()} >
                             Register
                         </Button>
                     </Form>

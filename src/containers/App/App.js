@@ -264,7 +264,7 @@ class App extends Component {
 
 
         { this.state.route ==="login" 
-            ? <Login />
+            ? <Login onRouteChange={this.onRouteChange}/>
             : this.state.route === "home" ?
                 <div className="row">
                 <div className="col-lg-4 listSummarySection">
@@ -330,7 +330,7 @@ class App extends Component {
                 </div>{/*End Of Col*/}
               </div>/*End Of Row*/
               
-              : <Register />
+              : <Register onRouteChange={this.onRouteChange} />
               
 
         }

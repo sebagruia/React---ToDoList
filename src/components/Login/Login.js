@@ -3,7 +3,7 @@ import './Login.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-const Login = () => {
+const Login = ({onRouteChange}) => {
 
     const [validated, setValidated] = useState(false);
 
@@ -17,7 +17,10 @@ const Login = () => {
       setValidated(true);
     };
 
-   
+  const onLogInClick = ()=>{
+    onRouteChange('home');
+
+   }
 
     return (
         <div className="container">
@@ -40,7 +43,7 @@ const Login = () => {
                             <Form.Control.Feedback type="valid">Looks Good</Form.Control.Feedback>
 
                         </Form.Group>
-                        <Button variant="primary" type="submit" >
+                        <Button variant="primary" type="submit" onClick={()=>onLogInClick()} >
                             Log In
                         </Button>
                     </Form>
