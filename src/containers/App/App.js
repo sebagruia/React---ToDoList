@@ -13,7 +13,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      route:'home',
+      route: 'home',
       windowWidth: 0,
       activeButtonId: 0,
       activeButtonName: '',
@@ -24,8 +24,27 @@ class App extends Component {
       modalInput: '',
       show: false,
       inputValuesNewItem: [],
-      container: [
-        // {
+      // container: [
+      //   // {
+      //   //   id: "",
+      //   //   listItems: [
+      //   //     {
+      //   //       item: itemvalue,
+      //   //       lineThrough: null,
+      //   //       uncheckIcon: null,
+      //   //       checkIcon: "none",
+      //   //       display: ""
+      //   //     }
+      //   //   ]
+      //   // }
+      // ],
+
+      user: {
+        // id: '',
+        name: '',
+        email: '',
+        container:[
+          // {
         //   id: "",
         //   listItems: [
         //     {
@@ -37,10 +56,26 @@ class App extends Component {
         //     }
         //   ]
         // }
-      ],
+        ],
+        joined: ''
+        
+      }
     };
   }
 
+
+  loadUser = (user) => {
+    this.setState({
+      user: {
+        // id:user.id,
+        name:user.name,
+        email:user.email,
+        container:user.container,
+        joined:user.joined
+      }
+    });
+
+  }
 
   // Checking Window innerWidth
 
@@ -78,18 +113,23 @@ class App extends Component {
       return
     }
 
-    const container = [...this.state.container];
-    container.push({ id: this.state.inputAddNewButton, listItems: [] });
+    // const container = [...this.state.container];
+    let user = this.state.user;
+    user.container.push({ id: this.state.inputAddNewButton, listItems: [] });
 
     this.setState({
-      container: container,
+      // container: container,
+      user:user,
       inputAddNewButton: ""
     })
   }
 
   // Sets new Button Id and Name
   setActiveButtonIdAndName = (index) => {
-    const buttonName = this.state.container[index].id;
+    // const buttonName = this.state.container[index].id;
+    let user = this.state.user;
+    const buttonName = user.container[index].id;
+
 
     this.setState({ activeButtonId: index, activeButtonName: buttonName })
 
@@ -102,8 +142,9 @@ class App extends Component {
       return
     }
 
-    const container = [...this.state.container];
-    container[this.state.activeButtonId]
+    // const container = [...this.state.container];
+    let user = this.state.user;
+    user.container[this.state.activeButtonId]
       .listItems
       .push({
         item: this.state.inputAddNewItem,
@@ -114,7 +155,8 @@ class App extends Component {
       });
 
     this.setState({
-      container: container,
+      // container: container,
+      user:user,
       inputAddNewItem: ""
     })
 
@@ -122,27 +164,32 @@ class App extends Component {
 
   // Delete item functionality by clicking the Delete Icon
   deleteItem = (index) => {
-    const container = [...this.state.container];
+    // const container = [...this.state.container];
+    let user = this.state.user;
 
-    container[this.state.activeButtonId].listItems[index].display = "none";
-    this.setState({ container: container });
+    user.container[this.state.activeButtonId].listItems[index].display = "none";
+    // this.setState({ container: container });
+    this.setState({ user: user });
+
   }
 
 
   // Sets the visibility of "check" and "unchecked" icons in the item li
   setItemStyle = (index) => {
-    const container = [...this.state.container];
+    // const container = [...this.state.container];
+    let user = this.state.user;
 
-    if (container[this.state.activeButtonId].listItems[index].lineThrough === null && container[this.state.activeButtonId].listItems[index].checkIcon === "none") {
-      container[this.state.activeButtonId].listItems[index].lineThrough = "line-through";
-      container[this.state.activeButtonId].listItems[index].uncheckIcon = "none";
-      container[this.state.activeButtonId].listItems[index].checkIcon = null;
+    if (user.container[this.state.activeButtonId].listItems[index].lineThrough === null && user.container[this.state.activeButtonId].listItems[index].checkIcon === "none") {
+      user.container[this.state.activeButtonId].listItems[index].lineThrough = "line-through";
+      user.container[this.state.activeButtonId].listItems[index].uncheckIcon = "none";
+      user.container[this.state.activeButtonId].listItems[index].checkIcon = null;
     } else {
-      container[this.state.activeButtonId].listItems[index].lineThrough = null;
-      container[this.state.activeButtonId].listItems[index].checkIcon = "none";
-      container[this.state.activeButtonId].listItems[index].uncheckIcon = null;
+      user.container[this.state.activeButtonId].listItems[index].lineThrough = null;
+      user.container[this.state.activeButtonId].listItems[index].checkIcon = "none";
+      user.container[this.state.activeButtonId].listItems[index].uncheckIcon = null;
     }
-    this.setState({ container: container })
+    // this.setState({ container: container })
+    this.setState({ user: user })
   }
 
   // Modal Functionality=======================
@@ -152,11 +199,13 @@ class App extends Component {
   }
 
   saveModalNewValue = () => {
-    const container = [...this.state.container];
-    container[this.state.activeButtonId].listItems[this.state.activeItemId].item = this.state.modalInput;
+    // const container = [...this.state.container];
+    let user = this.state.user;
+    user.container[this.state.activeButtonId].listItems[this.state.activeItemId].item = this.state.modalInput;
 
     this.setState({ show: false });
-    this.setState({ container: container });
+    // this.setState({ container: container });
+    this.setState({ user: user });
   }
 
   handleClose = () => {
@@ -175,20 +224,8 @@ class App extends Component {
   // ====================================
 
   onRouteChange = (route) => {
-    // if(route==="home" || this.state.route==="register" ){
-    //   this.setState({ route: "login" });
-    // }
-    // else if(this.state.route==="home" || this.state.route==="login" ){
-    //   this.setState({ route: "register" });
-    // }
-
-    this.setState({route:route});
+    this.setState({ route: route });
   }
-
-
-
-
-
 
 
   render() {
@@ -217,20 +254,25 @@ class App extends Component {
 
 
     // Returns the ButtonName component
+    let user = this.state.user;
+    console.log(user.container);
     let buttonsToBeRender = null;
-    buttonsToBeRender = (this.state.container.map((value, index) => {
-      return (<ButtonName
-        windowWidth={this.state.windowWidth}
-        onClick={() => this.setActiveButtonIdAndName(index)}
-        key={`${value}${index}`}
-        label={value.id}
-      />)
-    }))
+    if(user.container !== [] || user.container !== undefined ){
+      buttonsToBeRender = (user.container.map((value, index) => {
+        return (<ButtonName
+          windowWidth={this.state.windowWidth}
+          onClick={() => this.setActiveButtonIdAndName(index)}
+          key={`${value}${index}`}
+          label={value.id}
+        />)
+      }))
+    }
+  
 
     // Returns the Item component
     let itemToBeRender = null;
-    if (this.state.container.length !== 0) {
-      itemToBeRender = (this.state.container[this.state.activeButtonId].listItems.map((value, index) => {
+    if (user.container.length !== 0) {
+      itemToBeRender = (user.container[this.state.activeButtonId].listItems.map((value, index) => {
         return (<Item
           onClick={() => this.setItemStyle(index)}
           key={`${value}${index}`}
@@ -250,25 +292,23 @@ class App extends Component {
 
     return (
       <Fragment>
-        <Modalpopup show={this.state.show} 
-                    onChange = {(event)=>this.modalOnInputChange(event)} 
-                    handleClose = {()=>this.handleClose()}
-                    saveModalNewValue ={()=>this.saveModalNewValue()}/>
+        <Modalpopup show={this.state.show}
+          onChange={(event) => this.modalOnInputChange(event)}
+          handleClose={() => this.handleClose()}
+          saveModalNewValue={() => this.saveModalNewValue()} />
         < StartPage />
 
         <div className="container-fluid border border-light">
           <div className="row">
             <Navigation onRouteChange={this.onRouteChange} />
           </div>{/*End Of Row*/}
-          
 
-
-        { this.state.route ==="login" 
-            ? <Login onRouteChange={this.onRouteChange}/>
+          {this.state.route === "login"
+            ? <Login onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
             : this.state.route === "home" ?
-                <div className="row">
+              <div className="row">
                 <div className="col-lg-4 listSummarySection">
-                  <form className="form-inline formWraper" onSubmit ={(event) => this.plusNewButton(event)}>
+                  <form className="form-inline formWraper" onSubmit={(event) => this.plusNewButton(event)}>
                     <input
                       onChange={this.onInputchange}
                       value={this.state.inputAddNewButton}
@@ -302,7 +342,7 @@ class App extends Component {
                 </div>{/*End Of Col-lg-4*/}
 
                 <div className="col-lg-8 list-content">
-                  <form className="taskForm" onSubmit ={(event) => this.addNewItem(event)}>
+                  <form className="taskForm" onSubmit={(event) => this.addNewItem(event)}>
                     <div className="component1">
                       <input
                         onChange={this.onInputChangeNewItem}
@@ -329,12 +369,12 @@ class App extends Component {
                   </ul>
                 </div>{/*End Of Col*/}
               </div>/*End Of Row*/
-              
-              : <Register onRouteChange={this.onRouteChange} />
-              
 
-        }
-         
+              : <Register onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
+
+
+          }
+
         </div>{/*End Of Container Fluid*/}
       </Fragment >
 
