@@ -77,6 +77,7 @@ class App extends Component {
 
   }
 
+
   // Checking Window innerWidth
 
   componentDidMount() {
@@ -304,7 +305,7 @@ class App extends Component {
           </div>{/*End Of Row*/}
 
           {this.state.route === "login"
-            ? <Login onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
+            ? <Login onRouteChange={this.onRouteChange} loadUser={this.loadUser} checkLogin={this.checkLogin} />
             : this.state.route === "home" ?
               <div className="row">
                 <div className="col-lg-4 listSummarySection">

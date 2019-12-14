@@ -5,12 +5,6 @@ import './Navigation.css';
 
 const Navigation = ({onRouteChange}) => {
 
-    const onLogInButton = ()=>{
-        onRouteChange('login');
-    }
-    const onRegisterButton = ()=>{
-        onRouteChange('register');
-    }
 
 
     return (
@@ -24,10 +18,10 @@ const Navigation = ({onRouteChange}) => {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
                             <li className="nav-item item1 ml-auto ">
-                                <button type="button" id="buttonForAddingToDoList" className="btn btn-outline-secondary wraper" onClick={()=>onLogInButton()}>
+                                <button type="button" id="buttonForAddingToDoList" className="btn btn-outline-secondary wraper" onClick={()=>onRouteChange('login')}>
                                     <h5 className="font-weight-light">Log In</h5>
                                 </button>
-                                <button type="button" id="buttonForAddingToDoList" className="btn btn-outline-secondary wraper" onClick={()=>onRegisterButton()}>
+                                <button type="button" id="buttonForAddingToDoList" className="btn btn-outline-secondary wraper" onClick={()=>onRouteChange('register')}>
                                     <h5 className="font-weight-light">Register</h5>
                                 </button>
                             </li>
