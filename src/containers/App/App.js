@@ -14,6 +14,7 @@ class App extends Component {
     super();
     this.state = {
       route: 'home',
+      isLogedIn: false,
       windowWidth: 0,
       activeButtonId: 0,
       activeButtonName: '',
@@ -43,22 +44,22 @@ class App extends Component {
         // id: '',
         name: '',
         email: '',
-        container:[
+        container: [
           // {
-        //   id: "",
-        //   listItems: [
-        //     {
-        //       item: itemvalue,
-        //       lineThrough: null,
-        //       uncheckIcon: null,
-        //       checkIcon: "none",
-        //       display: ""
-        //     }
-        //   ]
-        // }
+          //   id: "",
+          //   listItems: [
+          //     {
+          //       item: itemvalue,
+          //       lineThrough: null,
+          //       uncheckIcon: null,
+          //       checkIcon: "none",
+          //       display: ""
+          //     }
+          //   ]
+          // }
         ],
         joined: ''
-        
+
       }
     };
   }
@@ -68,13 +69,24 @@ class App extends Component {
     this.setState({
       user: {
         // id:user.id,
-        name:user.name,
-        email:user.email,
-        container:user.container,
-        joined:user.joined
+        name: user.name,
+        email: user.email,
+        container: user.container,
+        joined: user.joined
       }
     });
 
+  }
+
+  onRouteChange = (route) => {
+    this.setState({ route: route });
+  }
+
+  changeLogStateToFalse = () => {
+      this.setState({ isLogedIn: false });
+  }
+  changeLogStateToTrue = () => {
+      this.setState({ isLogedIn: true });
   }
 
 
@@ -120,7 +132,7 @@ class App extends Component {
 
     this.setState({
       // container: container,
-      user:user,
+      user: user,
       inputAddNewButton: ""
     })
   }
@@ -157,7 +169,7 @@ class App extends Component {
 
     this.setState({
       // container: container,
-      user:user,
+      user: user,
       inputAddNewItem: ""
     })
 
@@ -224,9 +236,7 @@ class App extends Component {
   }
   // ====================================
 
-  onRouteChange = (route) => {
-    this.setState({ route: route });
-  }
+
 
 
   render() {
@@ -258,7 +268,7 @@ class App extends Component {
     let user = this.state.user;
     console.log(user.container);
     let buttonsToBeRender = null;
-    if(user.container !== [] || user.container !== undefined ){
+    if (user.container !== [] || user.container !== undefined) {
       buttonsToBeRender = (user.container.map((value, index) => {
         return (<ButtonName
           windowWidth={this.state.windowWidth}
@@ -268,7 +278,7 @@ class App extends Component {
         />)
       }))
     }
-  
+
 
     // Returns the Item component
     let itemToBeRender = null;
@@ -301,11 +311,11 @@ class App extends Component {
 
         <div className="container-fluid border border-light">
           <div className="row">
-            <Navigation onRouteChange={this.onRouteChange} />
+            <Navigation onRouteChange={this.onRouteChange} changeLogStateToFalse={this.changeLogStateToFalse} isLogedIn={this.state.isLogedIn} userName = {this.state.user.name}/>
           </div>{/*End Of Row*/}
 
           {this.state.route === "login"
-            ? <Login onRouteChange={this.onRouteChange} loadUser={this.loadUser} checkLogin={this.checkLogin} />
+            ? <Login onRouteChange={this.onRouteChange} loadUser={this.loadUser} changeLogStateToTrue={this.changeLogStateToTrue} />
             : this.state.route === "home" ?
               <div className="row">
                 <div className="col-lg-4 listSummarySection">
@@ -371,7 +381,7 @@ class App extends Component {
                 </div>{/*End Of Col*/}
               </div>/*End Of Row*/
 
-              : <Register onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
+              : <Register onRouteChange={this.onRouteChange} loadUser={this.loadUser} changeLogStateToTrue={this.changeLogStateToTrue} />
 
 
           }

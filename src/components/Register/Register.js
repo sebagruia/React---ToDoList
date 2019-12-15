@@ -3,7 +3,7 @@ import './Register.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-const Register = ({onRouteChange, loadUser}) => {
+const Register = ({onRouteChange, loadUser, changeLogStateToTrue}) => {
 
     const [validated, setValidated] = useState(false);
     const [registerName, setRegisterName] = useState('');
@@ -47,6 +47,7 @@ const Register = ({onRouteChange, loadUser}) => {
                     console.log(user);
                     loadUser(user);
                     onRouteChange('home');
+                    changeLogStateToTrue();
                 }
                 // else{
                 //     window.alert('Wrong Credentials');

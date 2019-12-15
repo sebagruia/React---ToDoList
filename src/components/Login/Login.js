@@ -3,7 +3,7 @@ import './Login.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-const Login = ({ onRouteChange}) => {
+const Login = ({ onRouteChange, changeLogStateToTrue, loadUser}) => {
 
 
     const [validated, setValidated] = useState(false);
@@ -41,7 +41,8 @@ const Login = ({ onRouteChange}) => {
             .then(user=>{
                 if(user.id){
                     onRouteChange('home');
-                    console.log(user.name);
+                    changeLogStateToTrue();
+                    loadUser(user);
                 }
                 else{
                     window.alert('Wrong Credentials');

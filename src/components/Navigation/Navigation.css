@@ -18,10 +18,15 @@ nav {
     margin-right:5px;
 }
 
-.nav-item .wraper h5 {
+.nav-item h5{
+    margin-right:10px;
+}
+
+.nav-item .wraper h5,
+.nav-item h5 {
     display: inline-block;
     font-family: 'Yanone Kaffeesatz', sans-serif;
-    line-height: 10px;;
+    line-height: 10px;
 
 }
 
