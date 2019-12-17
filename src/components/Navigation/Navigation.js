@@ -3,11 +3,19 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import './Navigation.css';
 
-const Navigation = ({onRouteChange,changeLogStateToFalse, isLogedIn, userName}) => {
-
+const Navigation = ({onRouteChange,changeLogStateToFalse, isLogedIn, userName,loadUser}) => {
+const initialUser = {
+    // id:user.id,
+    name: '',
+    email:'',
+    container: [],
+    joined: ''
+}
 const logOutFunctionalities = ()=>{
     onRouteChange('login');
     changeLogStateToFalse();
+    loadUser(initialUser);
+
 }
 
     if(!isLogedIn){

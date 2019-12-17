@@ -311,7 +311,11 @@ class App extends Component {
 
         <div className="container-fluid border border-light">
           <div className="row">
-            <Navigation onRouteChange={this.onRouteChange} changeLogStateToFalse={this.changeLogStateToFalse} isLogedIn={this.state.isLogedIn} userName = {this.state.user.name}/>
+            <Navigation onRouteChange={this.onRouteChange}
+             changeLogStateToFalse={this.changeLogStateToFalse}
+              isLogedIn={this.state.isLogedIn} 
+              userName = {this.state.user.name}
+              loadUser = {this.loadUser}/>
           </div>{/*End Of Row*/}
 
           {this.state.route === "login"
