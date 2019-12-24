@@ -44,16 +44,11 @@ const Register = ({onRouteChange, loadUser, changeLogStateToTrue}) => {
             .then(response=>response.json())
             .then(user=>{
                 if(user.name){
-                    console.log(user);
                     loadUser(user);
                     onRouteChange('home');
                     changeLogStateToTrue();
                 }
-                // else{
-                //     window.alert('Wrong Credentials');
-                // }
             })
-    
        }
 
     return (
@@ -91,10 +86,6 @@ const Register = ({onRouteChange, loadUser, changeLogStateToTrue}) => {
         </div>
 
     );
-
-
-
-
 }
 
 

@@ -3,7 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import './Navigation.css';
 
-const Navigation = ({onRouteChange,changeLogStateToFalse, isLogedIn, userName,loadUser}) => {
+const Navigation = ({onRouteChange,changeLogStateToFalse, isLogedIn,loadUser,user}) => {
 const initialUser = {
     // id:user.id,
     name: '',
@@ -11,10 +11,23 @@ const initialUser = {
     container: [],
     joined: ''
 }
-const logOutFunctionalities = ()=>{
+const saveAndExitFunctionalities = ()=>{
     onRouteChange('login');
     changeLogStateToFalse();
     loadUser(initialUser);
+console.log(user.email);
+console.log(user.container);
+    fetch('http://localhost:4000/save&exit',{
+        method:'put',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+            email:user.email,
+            container:user.container
+        })
+    })
+    .then(response=>response.json());
+    // .then(confirmation=>confirmation.json());
+    
 
 }
 
@@ -30,10 +43,10 @@ const logOutFunctionalities = ()=>{
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="mr-auto">
                                 <li className="nav-item item1 ml-auto ">
-                                    <button type="button" id="buttonForAddingToDoList" className="btn btn-outline-secondary wraper" onClick={()=>onRouteChange('login')}>
+                                    <button type="button" id="buttonForAddingToDoList" className="loginButton btn btn-outline-secondary wraper" onClick={()=>onRouteChange('login')}>
                                         <h5 className="font-weight-light">Log In</h5>
                                     </button>
-                                    <button type="button" id="buttonForAddingToDoList" className="btn btn-outline-secondary wraper" onClick={()=>onRouteChange('register')}>
+                                    <button type="button" id="buttonForAddingToDoList" className="registerButton btn btn-outline-secondary wraper" onClick={()=>onRouteChange('register')}>
                                         <h5 className="font-weight-light">Register</h5>
                                     </button>
                                 </li>
@@ -58,9 +71,9 @@ const logOutFunctionalities = ()=>{
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="mr-auto">
                                 <li className="nav-item item1 ml-auto ">
-                                    <h5>Welcome {`${userName}`}</h5>
-                                    <button type="button" id="buttonForAddingToDoList" className="btn btn-outline-secondary wraper" onClick={()=>logOutFunctionalities()}>
-                                        <h5 className="font-weight-light">Log Out</h5>
+                                    <h5 className="welcome"> Welcome {`${user.name}`}</h5>
+                                    <button type="button" id="buttonForAddingToDoList" className="saveExitButton btn btn-outline-secondary wraper" onClick={()=>saveAndExitFunctionalities()}>
+                                        <h5>Save & Exit</h5>
                                     </button>
                                 </li>
                             </Nav>

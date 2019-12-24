@@ -18,7 +18,11 @@ nav {
     margin-right:5px;
 }
 
-.nav-item h5{
+.nav-item .saveExitButton{
+    color: #ffc107;
+}
+
+.nav-item .welcome{
     margin-right:10px;
 }
 

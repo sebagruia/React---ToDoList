@@ -25,23 +25,7 @@ class App extends Component {
       modalInput: '',
       show: false,
       inputValuesNewItem: [],
-      // container: [
-      //   // {
-      //   //   id: "",
-      //   //   listItems: [
-      //   //     {
-      //   //       item: itemvalue,
-      //   //       lineThrough: null,
-      //   //       uncheckIcon: null,
-      //   //       checkIcon: "none",
-      //   //       display: ""
-      //   //     }
-      //   //   ]
-      //   // }
-      // ],
-
       user: {
-        // id: '',
         name: '',
         email: '',
         container: [
@@ -59,7 +43,6 @@ class App extends Component {
           // }
         ],
         joined: ''
-
       }
     };
   }
@@ -266,9 +249,8 @@ class App extends Component {
 
     // Returns the ButtonName component
     let user = this.state.user;
-    console.log(user.container);
     let buttonsToBeRender = null;
-    if (user.container !== [] || user.container !== undefined) {
+    if ( user.container.length !== 0) {
       buttonsToBeRender = (user.container.map((value, index) => {
         return (<ButtonName
           windowWidth={this.state.windowWidth}
@@ -314,8 +296,8 @@ class App extends Component {
             <Navigation onRouteChange={this.onRouteChange}
              changeLogStateToFalse={this.changeLogStateToFalse}
               isLogedIn={this.state.isLogedIn} 
-              userName = {this.state.user.name}
-              loadUser = {this.loadUser}/>
+              loadUser = {this.loadUser}
+              user = {this.state.user}/>
           </div>{/*End Of Row*/}
 
           {this.state.route === "login"
@@ -386,13 +368,9 @@ class App extends Component {
               </div>/*End Of Row*/
 
               : <Register onRouteChange={this.onRouteChange} loadUser={this.loadUser} changeLogStateToTrue={this.changeLogStateToTrue} />
-
-
           }
-
         </div>{/*End Of Container Fluid*/}
       </Fragment >
-
     );
   }
 }
