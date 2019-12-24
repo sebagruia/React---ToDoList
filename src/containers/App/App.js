@@ -146,8 +146,7 @@ class App extends Component {
         item: this.state.inputAddNewItem,
         lineThrough: null,
         uncheckIcon: null,
-        checkIcon: "none",
-        display: "",
+        checkIcon: "none"
       });
 
     this.setState({
@@ -160,19 +159,14 @@ class App extends Component {
 
   // Delete item functionality by clicking the Delete Icon
   deleteItem = (index) => {
-    // const container = [...this.state.container];
     let user = this.state.user;
-
-    user.container[this.state.activeButtonId].listItems[index].display = "none";
-    // this.setState({ container: container });
+    user.container[this.state.activeButtonId].listItems.splice(index,1);
     this.setState({ user: user });
-
   }
 
 
   // Sets the visibility of "check" and "unchecked" icons in the item li
   setItemStyle = (index) => {
-    // const container = [...this.state.container];
     let user = this.state.user;
 
     if (user.container[this.state.activeButtonId].listItems[index].lineThrough === null && user.container[this.state.activeButtonId].listItems[index].checkIcon === "none") {
@@ -188,7 +182,7 @@ class App extends Component {
     this.setState({ user: user })
   }
 
-  // Modal Functionality=======================
+  //==========MODAL FUNCTIONALITY====================
 
   modalOnInputChange = (event) => {
     this.setState({ modalInput: event.target.value });
