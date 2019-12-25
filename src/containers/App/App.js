@@ -126,7 +126,6 @@ class App extends Component {
 
   // Sets new Button Id and Name
   setActiveButtonIdAndName = (index) => {
-    // const buttonName = this.state.container[index].id;
     let user = this.state.user;
     console.log(user.container[index]);
     const buttonName = user.container[index].id;
@@ -319,7 +318,7 @@ class App extends Component {
                   <div className="myListSummary-wraper">
                     <DropdownButton
                       id="dropdown-basic-button"
-                      className={` m-auto capitalize ${dropdownButtonVisibility()}`}
+                      className={`m-auto capitalize ${dropdownButtonVisibility()}`}
                       title="All Your Lists"
                       variant="Warning"
                       size="lg">
