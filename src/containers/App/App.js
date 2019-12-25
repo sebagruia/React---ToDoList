@@ -128,6 +128,7 @@ class App extends Component {
   setActiveButtonIdAndName = (index) => {
     // const buttonName = this.state.container[index].id;
     let user = this.state.user;
+    console.log(user.container[index]);
     const buttonName = user.container[index].id;
     this.setState({ activeButtonId: index, activeButtonName: buttonName })
   }
@@ -246,7 +247,7 @@ class App extends Component {
       buttonsToBeRender = (user.container.map((value, index) => {
         return (<ButtonName
           windowWidth={this.state.windowWidth}
-          onClick={(index) => this.setActiveButtonIdAndName(index)}
+          onClick={() => this.setActiveButtonIdAndName(index)}
           deleteListButton = {()=>this.deleteListButton(index)}
           key={`${value}${index}`}
           label={value.id}

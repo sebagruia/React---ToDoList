@@ -23,20 +23,11 @@ const ButtonName = ({ onClick, label, deleteListButton, windowWidth }) => {
         }
     }
 
-
-
+    
     return (
         <Fragment>
             {liItem()}
         </Fragment>
-
-
-
-
-
-
-
-
     );
 
 }
