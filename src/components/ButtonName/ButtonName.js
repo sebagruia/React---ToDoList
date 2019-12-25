@@ -3,7 +3,7 @@ import './ButtonName.css';
 import DropdownItem from 'react-bootstrap/DropdownItem';
 
 
-const ButtonName = ({ onClick, label, windowWidth }) => {
+const ButtonName = ({ onClick, label, deleteListButton, windowWidth }) => {
 
     const liItem = () => {
 
@@ -16,6 +16,7 @@ const ButtonName = ({ onClick, label, windowWidth }) => {
             return (
                 <li className="newListLi"  >
                     <button onClick={onClick} type="button" className="btn btn-outline-warning btn-lg btn-block capitalize button-color-orange">{label}</button>
+                    <i className="far fa-trash-alt" onClick={deleteListButton}></i>
                 </li >
 
             );

@@ -51,7 +51,6 @@ class App extends Component {
   loadUser = (user) => {
     this.setState({
       user: {
-        // id:user.id,
         name: user.name,
         email: user.email,
         container: user.container,
@@ -102,22 +101,27 @@ class App extends Component {
     this.setState({ inputAddNewItem: event.target.value });
   }
 
-  // Adds new Button
+  // Adds new List Button
   plusNewButton = (event) => {
     event.preventDefault();
     if (this.state.inputAddNewButton === "") {
       return
     }
 
-    // const container = [...this.state.container];
     let user = this.state.user;
     user.container.push({ id: this.state.inputAddNewButton, listItems: [] });
 
     this.setState({
-      // container: container,
       user: user,
       inputAddNewButton: ""
     })
+  }
+
+   // Delete List Button by clicking the Garbage Bin Icon 
+   deleteListButton = (index) => {
+    let user = this.state.user;
+    user.container.splice(index,1);
+    this.setState({ user: user });
   }
 
   // Sets new Button Id and Name
@@ -125,10 +129,7 @@ class App extends Component {
     // const buttonName = this.state.container[index].id;
     let user = this.state.user;
     const buttonName = user.container[index].id;
-
-
     this.setState({ activeButtonId: index, activeButtonName: buttonName })
-
   }
 
   // Adds new Item to the created list
@@ -137,8 +138,6 @@ class App extends Component {
     if (this.state.inputAddNewItem === "") {
       return
     }
-
-    // const container = [...this.state.container];
     let user = this.state.user;
     user.container[this.state.activeButtonId]
       .listItems
@@ -150,14 +149,14 @@ class App extends Component {
       });
 
     this.setState({
-      // container: container,
       user: user,
       inputAddNewItem: ""
     })
-
   }
 
-  // Delete item functionality by clicking the Delete Icon
+ 
+
+  // Delete item functionality by clicking the Delete Icon for the Items
   deleteItem = (index) => {
     let user = this.state.user;
     user.container[this.state.activeButtonId].listItems.splice(index,1);
@@ -178,7 +177,6 @@ class App extends Component {
       user.container[this.state.activeButtonId].listItems[index].checkIcon = "none";
       user.container[this.state.activeButtonId].listItems[index].uncheckIcon = null;
     }
-    // this.setState({ container: container })
     this.setState({ user: user })
   }
 
@@ -248,7 +246,8 @@ class App extends Component {
       buttonsToBeRender = (user.container.map((value, index) => {
         return (<ButtonName
           windowWidth={this.state.windowWidth}
-          onClick={() => this.setActiveButtonIdAndName(index)}
+          onClick={(index) => this.setActiveButtonIdAndName(index)}
+          deleteListButton = {()=>this.deleteListButton(index)}
           key={`${value}${index}`}
           label={value.id}
         />)
