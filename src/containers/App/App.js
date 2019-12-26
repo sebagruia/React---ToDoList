@@ -26,6 +26,7 @@ class App extends Component {
       show: false,
       inputValuesNewItem: [],
       user: {
+        id:null,
         name: '',
         email: '',
         container: [
@@ -121,7 +122,22 @@ class App extends Component {
    deleteListButton = (index) => {
     let user = this.state.user;
     user.container.splice(index,1);
-    this.setState({ user: user });
+    //After deleting a List button - the "activeButtonId" and "activeButtonName" are set to the values from the first element in the container[]
+    if(user.container.length>0){
+      const activeButtonName = user.container[0].id;
+      this.setState({
+        activeButtonId:0,
+        activeButtonName:activeButtonName});
+    }
+    else{
+      this.setState({
+        activeButtonName:""});
+    }
+    
+    this.setState({ 
+      user: user,
+     });
+     console.log(`activeButtonId = ${this.state.activeButtonId} and activeButtonName = ${this.state.activeButtonName}`)
   }
 
   // Sets new Button Id and Name
@@ -134,8 +150,9 @@ class App extends Component {
 
   // Adds new Item to the created list
   addNewItem = (event) => {
+    console.log(`activeButtonId = ${this.state.activeButtonId} and activeButtonName = ${this.state.activeButtonName}`)
     event.preventDefault();
-    if (this.state.inputAddNewItem === "") {
+    if (this.state.inputAddNewItem === "" || this.state.activeButtonName === "") {
       return
     }
     let user = this.state.user;
@@ -250,6 +267,7 @@ class App extends Component {
           deleteListButton = {()=>this.deleteListButton(index)}
           key={`${value}${index}`}
           label={value.id}
+          index={index}
         />)
       }))
     }
@@ -258,6 +276,7 @@ class App extends Component {
     // Returns the Item component
     let itemToBeRender = null;
     if (user.container.length !== 0) {
+      console.log(this.state.activeButtonId);
       itemToBeRender = (user.container[this.state.activeButtonId].listItems.map((value, index) => {
         return (<Item
           onClick={() => this.setItemStyle(index)}

@@ -3,7 +3,7 @@ import './ButtonName.css';
 import DropdownItem from 'react-bootstrap/DropdownItem';
 
 
-const ButtonName = ({ onClick, label, deleteListButton, windowWidth }) => {
+const ButtonName = ({ onClick, label, deleteListButton, windowWidth, index }) => {
 
     const liItem = () => {
 

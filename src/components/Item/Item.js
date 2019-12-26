@@ -17,8 +17,8 @@ const Item = ({ handleShow,
         <li className="li-item" style={{display}}>
             <div className="list-component text-secondary">
                 <div className="check-list">
-                <i className="far fa-circle" style ={{display:uncheckIcon}} role="button" onClick={()=>onClick()} aria-hidden="true"></i>
-                <i className="far fa-check-circle text-success" style ={{display:checkIcon}} role="button" onClick={()=>onClick()} aria-hidden="true"></i>
+                <i className="far fa-circle" style ={{display:uncheckIcon}} role="button" onClick={onClick} aria-hidden="true"></i>
+                <i className="far fa-check-circle text-success" style ={{display:checkIcon}} role="button" onClick={onClick} aria-hidden="true"></i>
                     <p className="p-text" style={{textDecoration: lineThrough}}>
                         {
                             !save ? modalInput : label
