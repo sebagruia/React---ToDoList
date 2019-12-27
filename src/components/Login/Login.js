@@ -29,7 +29,7 @@ const Login = ({ onRouteChange, changeLogStateToTrue, loadUser}) => {
     }
 
     const onLogInClick = (event) => {
-        fetch('http://localhost:4000/login', {
+        fetch('https://limitless-atoll-58976.herokuapp.com/login', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

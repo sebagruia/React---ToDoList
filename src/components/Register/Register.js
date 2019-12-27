@@ -32,7 +32,7 @@ const Register = ({onRouteChange, loadUser, changeLogStateToTrue}) => {
     }
 
     const onRegisterClick = ()=>{
-        fetch('http://localhost:4000/register', {
+        fetch('https://limitless-atoll-58976.herokuapp.com/register', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

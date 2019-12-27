@@ -137,20 +137,18 @@ class App extends Component {
     this.setState({ 
       user: user,
      });
-     console.log(`activeButtonId = ${this.state.activeButtonId} and activeButtonName = ${this.state.activeButtonName}`)
   }
+  
 
   // Sets new Button Id and Name
   setActiveButtonIdAndName = (index) => {
     let user = this.state.user;
-    console.log(user.container[index]);
     const buttonName = user.container[index].id;
     this.setState({ activeButtonId: index, activeButtonName: buttonName })
   }
 
   // Adds new Item to the created list
   addNewItem = (event) => {
-    console.log(`activeButtonId = ${this.state.activeButtonId} and activeButtonName = ${this.state.activeButtonName}`)
     event.preventDefault();
     if (this.state.inputAddNewItem === "" || this.state.activeButtonName === "") {
       return
@@ -267,7 +265,6 @@ class App extends Component {
           deleteListButton = {()=>this.deleteListButton(index)}
           key={`${value}${index}`}
           label={value.id}
-          index={index}
         />)
       }))
     }
@@ -276,7 +273,6 @@ class App extends Component {
     // Returns the Item component
     let itemToBeRender = null;
     if (user.container.length !== 0) {
-      console.log(this.state.activeButtonId);
       itemToBeRender = (user.container[this.state.activeButtonId].listItems.map((value, index) => {
         return (<Item
           onClick={() => this.setItemStyle(index)}

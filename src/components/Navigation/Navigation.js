@@ -17,7 +17,7 @@ const saveAndExitFunctionalities = ()=>{
     loadUser(initialUser);
 console.log(user.email);
 console.log(user.container);
-    fetch('http://localhost:4000/save&exit',{
+    fetch('https://limitless-atoll-58976.herokuapp.com/save&exit',{
         method:'put',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({
