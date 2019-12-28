@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React from "react";
 import '../Item/Item.css'
 
 const Item = ({ handleShow, 
@@ -10,14 +10,12 @@ const Item = ({ handleShow,
                 checkIcon,
                 uncheckIcon,
                 index,
-                display,
                 deleteItem}) => {
 
 
-        
 
     return (
-        <li className="li-item" style={{display}}>
+        <li className="li-item">
             <div className="list-component text-secondary">
                 <div className="check-list">
                 <i className="far fa-circle" style ={{display:uncheckIcon}} role="button" onClick={onClick} aria-hidden="true"></i>

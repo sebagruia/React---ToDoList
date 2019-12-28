@@ -290,7 +290,6 @@ class App extends Component {
           lineThrough={value.lineThrough}
           checkIcon={value.checkIcon}
           uncheckIcon={value.uncheckIcon}
-          display={value.display}
           deleteItem={() => this.deleteItem(index)} />)
       }))
     }

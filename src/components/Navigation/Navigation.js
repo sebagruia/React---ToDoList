@@ -5,19 +5,16 @@ import './Navigation.css';
 
 const Navigation = ({onRouteChange,changeLogStateToFalse, isLogedIn,loadUser,user}) => {
 const initialUser = {
-    // id:user.id,
     name: '',
     email:'',
     container: [],
     joined: ''
 }
-const saveAndExitFunctionalities = ()=>{
-    onRouteChange('login');
-    changeLogStateToFalse();
-    loadUser(initialUser);
-console.log(user.email);
-console.log(user.container);
-    fetch('https://limitless-atoll-58976.herokuapp.com/save&exit',{
+const saveButtonFunctionalities = ()=>{
+    // onRouteChange('login');
+    // changeLogStateToFalse();
+    // loadUser(initialUser);
+    fetch('https://limitless-atoll-58976.herokuapp.com/save',{
         method:'put',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({
@@ -26,9 +23,20 @@ console.log(user.container);
         })
     })
     .then(response=>response.json());
-    // .then(confirmation=>confirmation.json());
-    
-
+}
+const LogOutButtonFunctionalities = ()=>{
+    onRouteChange('login');
+    changeLogStateToFalse();
+    loadUser(initialUser);
+    fetch('https://limitless-atoll-58976.herokuapp.com/logout',{
+        method:'put',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+            email:user.email,
+            container:user.container
+        })
+    })
+    .then(response=>response.json());
 }
 
     if(!isLogedIn){
@@ -72,8 +80,11 @@ console.log(user.container);
                             <Nav className="mr-auto">
                                 <li className="nav-item item1 ml-auto ">
                                     <h5 className="welcome"> Welcome {`${user.name}`}</h5>
-                                    <button type="button" id="buttonForAddingToDoList" className="saveExitButton btn btn-outline-secondary wraper" onClick={()=>saveAndExitFunctionalities()}>
-                                        <h5>Save & Exit</h5>
+                                    <button type="button" className="saveExitButton btn btn-outline-secondary wraper" onClick={()=>saveButtonFunctionalities()}>
+                                        <h5>Save</h5>
+                                    </button>
+                                    <button type="button" className="saveExitButton btn btn-outline-secondary wraper" onClick={()=>LogOutButtonFunctionalities()}>
+                                        <h5>Log out</h5>
                                     </button>
                                 </li>
                             </Nav>
