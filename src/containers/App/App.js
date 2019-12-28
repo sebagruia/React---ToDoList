@@ -58,6 +58,11 @@ class App extends Component {
         joined: user.joined
       }
     });
+    //The "activeButtonId" and "activeButtonName" are set automaticaly to the values from container[0] when the user is loaded
+    // if the container is not empty
+    if(user.container.length>0){
+      this.setActiveButtonIdAndName(0);
+    }
 
   }
 

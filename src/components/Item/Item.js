@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import '../Item/Item.css'
 
 const Item = ({ handleShow, 
@@ -12,6 +12,9 @@ const Item = ({ handleShow,
                 index,
                 display,
                 deleteItem}) => {
+
+
+        
 
     return (
         <li className="li-item" style={{display}}>
