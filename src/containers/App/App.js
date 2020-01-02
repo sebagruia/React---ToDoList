@@ -24,9 +24,8 @@ class App extends Component {
       save: true,
       modalInput: '',
       show: false,
-      inputValuesNewItem: [],
       user: {
-        id:null,
+        id: null,
         name: '',
         email: '',
         container: [
@@ -38,10 +37,11 @@ class App extends Component {
           //       lineThrough: null,
           //       uncheckIcon: null,
           //       checkIcon: "none",
+          //       numberOfItems:'1',
           //       display: ""
           //     }
           //   ]
-          // }
+          // } 
         ],
         joined: ''
       }
@@ -60,21 +60,27 @@ class App extends Component {
     });
     //The "activeButtonId" and "activeButtonName" are set automaticaly to the values from container[0] when the user is loaded
     // if the container is not empty
-    if(user.container.length>0){
+    if (user.container.length > 0) {
       this.setActiveButtonIdAndName(0);
     }
 
   }
 
   onRouteChange = (route) => {
-    this.setState({ route: route });
+    this.setState({ route: route});
+    if(this.state.route==='home'){
+      this.setState({
+        activeButtonId:0,
+        activeButtonName: ''
+      });
+    }
   }
 
   changeLogStateToFalse = () => {
-      this.setState({ isLogedIn: false });
+    this.setState({ isLogedIn: false });
   }
   changeLogStateToTrue = () => {
-      this.setState({ isLogedIn: true });
+    this.setState({ isLogedIn: true });
   }
 
 
@@ -123,27 +129,29 @@ class App extends Component {
     })
   }
 
-   // Delete List Button by clicking the Garbage Bin Icon 
-   deleteListButton = (index) => {
+  // Delete List Button by clicking the Garbage Bin Icon 
+  deleteListButton = (index) => {
     let user = this.state.user;
-    user.container.splice(index,1);
+    user.container.splice(index, 1);
     //After deleting a List button - the "activeButtonId" and "activeButtonName" are set to the values from the first element in the container[]
-    if(user.container.length>0){
+    if (user.container.length > 0) {
       const activeButtonName = user.container[0].id;
       this.setState({
-        activeButtonId:0,
-        activeButtonName:activeButtonName});
+        activeButtonId: 0,
+        activeButtonName: activeButtonName
+      });
     }
-    else{
+    else {
       this.setState({
-        activeButtonName:""});
+        activeButtonName: ""
+      });
     }
-    
-    this.setState({ 
+
+    this.setState({
       user: user,
-     });
+    });
   }
-  
+
 
   // Sets new Button Id and Name
   setActiveButtonIdAndName = (index) => {
@@ -165,7 +173,8 @@ class App extends Component {
         item: this.state.inputAddNewItem,
         lineThrough: null,
         uncheckIcon: null,
-        checkIcon: "none"
+        checkIcon: "none",
+        numberOfItems: '1'
       });
 
     this.setState({
@@ -174,14 +183,21 @@ class App extends Component {
     })
   }
 
- 
+
 
   // Delete item functionality by clicking the Delete Icon for the Items
   deleteItem = (index) => {
     let user = this.state.user;
-    user.container[this.state.activeButtonId].listItems.splice(index,1);
+    user.container[this.state.activeButtonId].listItems.splice(index, 1);
     this.setState({ user: user });
   }
+  // sets the number of Items  of the same kind from the List
+  onInputChangeTheNumberOfItems = (event, index) => {
+    let user = this.state.user;
+    user.container[this.state.activeButtonId].listItems[index].numberOfItems = event.target.value;
+    this.setState({ user: user });
+  }
+
 
 
   // Sets the visibility of "check" and "unchecked" icons in the item li
@@ -262,12 +278,12 @@ class App extends Component {
     // Returns the ButtonName component
     let user = this.state.user;
     let buttonsToBeRender = null;
-    if ( user.container.length !== 0) {
+    if (user.container.length !== 0) {
       buttonsToBeRender = (user.container.map((value, index) => {
         return (<ButtonName
           windowWidth={this.state.windowWidth}
           onClick={() => this.setActiveButtonIdAndName(index)}
-          deleteListButton = {()=>this.deleteListButton(index)}
+          deleteListButton={() => this.deleteListButton(index)}
           key={`${value}${index}`}
           label={value.id}
         />)
@@ -290,6 +306,8 @@ class App extends Component {
           lineThrough={value.lineThrough}
           checkIcon={value.checkIcon}
           uncheckIcon={value.uncheckIcon}
+          numberOfItems={value.numberOfItems}
+          onInputChangeTheNumberOfItems={(event) => this.onInputChangeTheNumberOfItems(event, index)}
           deleteItem={() => this.deleteItem(index)} />)
       }))
     }
@@ -306,10 +324,11 @@ class App extends Component {
         <div className="container-fluid border border-light">
           <div className="row">
             <Navigation onRouteChange={this.onRouteChange}
-             changeLogStateToFalse={this.changeLogStateToFalse}
-              isLogedIn={this.state.isLogedIn} 
-              loadUser = {this.loadUser}
-              user = {this.state.user}/>
+              changeLogStateToFalse={this.changeLogStateToFalse}
+              isLogedIn={this.state.isLogedIn}
+              loadUser={this.loadUser}
+              user={this.state.user}
+              setActiveButtonIdAndName={this.setActiveButtonIdAndName} />
           </div>{/*End Of Row*/}
 
           {this.state.route === "login"

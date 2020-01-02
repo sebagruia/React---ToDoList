@@ -39,7 +39,6 @@ const Login = ({ onRouteChange, changeLogStateToTrue, loadUser}) => {
         })
             .then(response=>response.json())
             .then(user=>{
-                console.log(user);
                 if(user.id){
                     //Because the response of the "user.container" was a String and not a Json I had to Parse the "user.container"
                    let parsedContainer =  user.container.map((element)=>{
@@ -48,7 +47,6 @@ const Login = ({ onRouteChange, changeLogStateToTrue, loadUser}) => {
                     });
                     user.container = parsedContainer;
                     //=====================================================================
-                    console.log(user);
                     onRouteChange('home');
                     changeLogStateToTrue();
                     loadUser(user);

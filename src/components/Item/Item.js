@@ -10,7 +10,10 @@ const Item = ({ handleShow,
                 checkIcon,
                 uncheckIcon,
                 index,
+                onInputChangeTheNumberOfItems,
+                numberOfItems,
                 deleteItem}) => {
+
 
 
 
@@ -29,7 +32,7 @@ const Item = ({ handleShow,
                 <div className="edit-list">
                     <i id={label} className="far fa-times-circle text-danger"  role="button" onClick={deleteItem} aria-hidden="true"></i>
                     <i id={index} className="far fa-edit text-info" role="button" onClick={(event)=>handleShow(event)} aria-hidden="true"></i>
-                    <input className="quantity" type="number" aria-label="Insert a number" name="quantity" min="1" max="20" aria-describedby="number of items of the same kind" placeholder="1" />
+                    <input onChange={onInputChangeTheNumberOfItems} className="quantity" type="number" aria-label="Insert a number" name="quantity" min="1" max="20" aria-describedby="number of items of the same kind" value={`${numberOfItems}`} />
                 </div>
             </div>
         </li>

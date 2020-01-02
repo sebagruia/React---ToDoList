@@ -11,9 +11,6 @@ const initialUser = {
     joined: ''
 }
 const saveButtonFunctionalities = ()=>{
-    // onRouteChange('login');
-    // changeLogStateToFalse();
-    // loadUser(initialUser);
     fetch('https://limitless-atoll-58976.herokuapp.com/save',{
         method:'put',
         headers:{'Content-Type':'application/json'},
@@ -25,9 +22,6 @@ const saveButtonFunctionalities = ()=>{
     .then(response=>response.json());
 }
 const LogOutButtonFunctionalities = ()=>{
-    onRouteChange('login');
-    changeLogStateToFalse();
-    loadUser(initialUser);
     fetch('https://limitless-atoll-58976.herokuapp.com/logout',{
         method:'put',
         headers:{'Content-Type':'application/json'},
@@ -36,7 +30,10 @@ const LogOutButtonFunctionalities = ()=>{
             container:user.container
         })
     })
-    .then(response=>response.json());
+    onRouteChange('login');
+    changeLogStateToFalse();
+    loadUser(initialUser);
+    
 }
 
     if(!isLogedIn){

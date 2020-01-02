@@ -141,22 +141,7 @@
   margin-left: 5px;
 }
 
-.todo-name {
-  width: 17%;
-  font-family: 'Yanone Kaffeesatz', sans-serif;
-  font-size: 1.5em;
-  font-weight: 400;
-  letter-spacing: 3px;
-  color: #2b3f5d;
-  text-transform: capitalize;
-  text-decoration: underline;
-  margin-bottom: 30px;
-  margin-top: 20px;
-  margin-left: 10%;
-  padding-bottom: 3px;
 
-
-}
 
 .todo-list {
   margin-top: 5vh;
@@ -172,7 +157,20 @@
   margin-bottom: 2vh;
   color: #495057;
   list-style: none;
+}
 
+.todo-name {
+  width: 17%;
+  font-size: 1.5em;
+  font-weight: 400;
+  letter-spacing: 3px;
+  color: #2b3f5d;
+  text-transform: capitalize;
+  text-decoration: underline;
+  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-left: 10%;
+  padding-bottom: 3px;
 }
 
 /* MEDIA QUERY*/
