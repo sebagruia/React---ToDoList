@@ -67,10 +67,10 @@ class App extends Component {
   }
 
   onRouteChange = (route) => {
-    this.setState({ route: route});
-    if(this.state.route==='home'){
+    this.setState({ route: route });
+    if (this.state.route === 'home') {
       this.setState({
-        activeButtonId:0,
+        activeButtonId: 0,
         activeButtonName: ''
       });
     }
@@ -160,6 +160,20 @@ class App extends Component {
     this.setState({ activeButtonId: index, activeButtonName: buttonName })
   }
 
+  // The functionality of the Save button near the list Title
+  saveListButtonFunctionalities = () => {
+    fetch('https://limitless-atoll-58976.herokuapp.com/save', {
+      method: 'put',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: this.state.user.email,
+        container: this.state.user.container
+      })
+    })
+      .then(response => response.json());
+  }
+
+
   // Adds new Item to the created list
   addNewItem = (event) => {
     event.preventDefault();
@@ -215,6 +229,8 @@ class App extends Component {
     }
     this.setState({ user: user })
   }
+
+
 
   //==========MODAL FUNCTIONALITY====================
 
@@ -390,7 +406,31 @@ class App extends Component {
                     </div>
                   </form>
                   <ul className="todo-list">
-                    <h3 className="todo-name">{this.state.activeButtonName}</h3>
+
+                    {
+                      this.state.activeButtonName !== '' ?
+
+                        <div className="list-title-wraper">
+                          <div>
+                            <h3 className="todo-name">{this.state.activeButtonName}</h3>
+                          </div>
+                          <div>
+                            <i className="fas fa-save saveExitButton" role="button" onClick={this.saveListButtonFunctionalities}>
+
+                              <span className="tooltiptext">Save</span>
+
+                            </i>
+
+                          </div>
+                        </div>
+
+                        : null
+                    }
+
+
+
+
+
 
                     {itemToBeRender}
 

@@ -159,6 +159,51 @@
   list-style: none;
 }
 
+.todo-list .list-title-wraper{
+  display:flex;
+}
+
+.todo-list .saveExitButton{
+  position:relative;
+  color: #2b3f5d;
+  margin-top: 25px;
+  margin-left:25px;
+  font-size:20px;
+}
+
+.todo-list .saveExitButton:hover{
+  color: #28a745;
+  cursor: pointer;
+}
+
+
+/* ===TOOLTIP SETUP== */
+
+/* Tooltip text */
+.todo-list .saveExitButton .tooltiptext {
+  visibility: hidden;
+  width: 35px;
+  background-color: #2b3f5d;
+  color: #fff;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight:400;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  left:25px;
+  top:-5px;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.todo-list .saveExitButton:hover .tooltiptext {
+  visibility: visible;
+}
+/* ========================== */
+
 .todo-name {
   width: 17%;
   font-size: 1.5em;
@@ -225,9 +270,6 @@
 }
 
 @media screen and (min-width:412px) {
-  /* .dropdown-menu {
-    left: 5px !important;
-  } */
   .myListSummary-wraper .dropdown {
     width: 80%;
 }
@@ -242,10 +284,6 @@
   .taskForm .component1 {
     width: 63%;
   }
-
-  /* .dropdown-menu {
-    left: 9px !important;
-  } */
 }
 
 @media screen and (min-width: 500px){
@@ -264,16 +302,9 @@
     width: 70%;
 }
 
-  /* .dropdown-menu {
-    left: 12px !important;
-  } */
-
 }
 
 @media screen and (min-width:600px) {
-  /* .dropdown-menu {
-    left: 15px !important;
-  } */
 
   .taskForm .component2 {
     margin-left: 30px;
