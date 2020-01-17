@@ -409,28 +409,23 @@ class App extends Component {
 
                     {
                       this.state.activeButtonName !== '' ?
-
                         <div className="list-title-wraper">
                           <div>
                             <h3 className="todo-name">{this.state.activeButtonName}</h3>
                           </div>
-                          <div>
-                            <i className="fas fa-save saveExitButton" role="button" onClick={this.saveListButtonFunctionalities}>
+                          {
+                            this.state.isLogedIn  ?
+                              <div>
+                                <i className="fas fa-save saveExitButton" role="button" onClick={this.saveListButtonFunctionalities}>
+                                  <span className="tooltiptext">Save</span>
+                                </i>
+                              </div>
+                              : null
+                          }
 
-                              <span className="tooltiptext">Save</span>
-
-                            </i>
-
-                          </div>
                         </div>
-
                         : null
                     }
-
-
-
-
-
 
                     {itemToBeRender}
 
