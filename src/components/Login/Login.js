@@ -3,7 +3,7 @@ import './Login.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-const Login = ({ onRouteChange, changeLogStateToTrue, loadUser}) => {
+const Login = ({ onRouteChange, changeLogState, loadUser}) => {
 
 
     const [validated, setValidated] = useState(false);
@@ -48,7 +48,7 @@ const Login = ({ onRouteChange, changeLogStateToTrue, loadUser}) => {
                     user.container = parsedContainer;
                     //=====================================================================
                     onRouteChange('home');
-                    changeLogStateToTrue();
+                    changeLogState();
                     loadUser(user);
                 }
                 else{

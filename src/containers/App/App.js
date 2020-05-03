@@ -76,11 +76,8 @@ class App extends Component {
     }
   }
 
-  changeLogStateToFalse = () => {
-    this.setState({ isLogedIn: false });
-  }
-  changeLogStateToTrue = () => {
-    this.setState({ isLogedIn: true });
+  changeLogState = () => {
+    this.setState({ isLogedIn: !this.state.isLogedIn });
   }
 
 
@@ -340,7 +337,7 @@ class App extends Component {
         <div className="container-fluid border border-light">
           <div className="row">
             <Navigation onRouteChange={this.onRouteChange}
-              changeLogStateToFalse={this.changeLogStateToFalse}
+              changeLogState={this.changeLogState}
               isLogedIn={this.state.isLogedIn}
               loadUser={this.loadUser}
               user={this.state.user}
@@ -348,7 +345,7 @@ class App extends Component {
           </div>{/*End Of Row*/}
 
           {this.state.route === "login"
-            ? <Login onRouteChange={this.onRouteChange} loadUser={this.loadUser} changeLogStateToTrue={this.changeLogStateToTrue} />
+            ? <Login onRouteChange={this.onRouteChange} loadUser={this.loadUser} changeLogState={this.changeLogState} />
             : this.state.route === "home" ?
               <div className="row">
                 <div className="col-lg-4 listSummarySection">
