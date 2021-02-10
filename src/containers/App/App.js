@@ -335,7 +335,7 @@ class App extends Component {
           onChange={(event) => this.modalOnInputChange(event)}
           handleClose={() => this.handleClose()}
           saveModalNewValue={() => this.saveModalNewValue()} />
-        < StartPage />
+        <StartPage />
 
         <div className="container-fluid border border-light">
           <div className="row">
